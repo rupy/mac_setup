@@ -5,6 +5,11 @@ ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/
 # ツール
 brew install tree
 brew install nkf
+brew install wget
+brew install imagemagick
+brew install jq
+brew install tmux
+brew install pandoc
 
 # git
 brew install git
@@ -18,6 +23,7 @@ ssh-keygen -t rsa -b 4096 -C "mail@example.com"
 
 ## react-native
 brew install node
+brew install yarn
 brew install watchman
 npm install -g react-native-cli
 npm install -g firebase-tools
@@ -38,9 +44,28 @@ brew install rbenv
 # rvebv versions
 # sudo gem install cocoapods
 
+# python
+brew install pyenv
+echo 'export PYENV_ROOT="${HOME}/.pyenv"' >> ~/.zshrc
+echo 'export PATH="${PYENV_ROOT}/bin:$PATH"' >> ~/.zshrc
+echo 'eval "$(pyenv init -)"' >> ~/.zshrc
+exec $SHELL -l
+
 # Database
 brew install mysql
 brew cask install mysqlworkbench
+brew install postgresql
+
+# elastic stack
+brew install elasticsearch
+echo 'export ELASTICPATH=/usr/local/opt/elasticsearch/libexec/bin/' >> ~/.zshrc
+echo 'export PATH=$PATH:$ELASTICPATH' >> ~/.zshrc
+elasticsearch-plugin install analysis-kuromoji
+brew install kibana
+
+# Terraform
+brew install terraform
+gem install terraforming
 
 # アプリ
 brew cask install google-chrome
@@ -62,16 +87,64 @@ brew cask install sketch
 brew cask install google-drive
 brew cask install java
 brew cask install intellij-idea
+brew cask install pycharm-ce
 brew cask install deco
 brew cask install visual-studio-code
 brew cask install visual-studio
 brew cask install OBS
 brew cask install freemind
 brew cask instakk yed
-
+brew cask install cyberduck # FTP
+brew cask install dash
+brew cask install sequel-pro
+brew cask install sourcetree
+brew cask install macvim
+brew cask install openoffice # 英語が入ってしまう？
+brew cask install coteditor
+brew cask install lastpass
+brew cask install shady
+brew cask install telegram
+brew cask install gitter
 
 # 仮想化
 brew cask install docker
 brew cask install docker-toolbox
 brew cask install virtualbox
 brew cask install vagrant
+
+# GCP
+brew cask install google-cloud-sdk
+
+# AWS
+## AWS CLI
+brew install awscli
+## ECS CLI
+sudo curl -o /usr/local/bin/ecs-cli https://s3.amazonaws.com/amazon-ecs-cli/ecs-cli-darwin-amd64-latest
+sudo chmod +x /usr/local/bin/ecs-cli
+
+
+# pip
+pip install tensorflow
+pip install ipython
+
+# tex
+brew cask install mactex
+# load
+sudo tlmgr update --self --all
+# 和文
+# こちらは別のページで紹介されていたもの
+#cd /usr/local/texlive/2015/texmf-dist/scripts/cjk-gs-integrate
+#sudo perl cjk-gs-integrate.pl --link-texmf --force
+#sudo mktexlsr
+#sudo updmap-sys --setoption kanjiEmbed hiragino-elcapitan-pron
+sudo cjk-gs-integrate --link-texmf --force
+sudo mktexlsr
+sudo kanji-config-updmap-sys hiragino-elcapitan-pron
+# texshopの設定プロファイルからpTeX (ptex2pdf)を選ぶこと
+
+# Kubernetes
+brew install eubectl
+brew cask install minikube
+
+# Swagger
+brew install swagger-codegen
